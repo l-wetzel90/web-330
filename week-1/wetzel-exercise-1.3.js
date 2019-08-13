@@ -30,6 +30,7 @@ console.log(header.display("Loren", "Wetzel", "Exercise 1.3"));
 
 // start program
 
+//constructor function
 function CellPhone(manufacturer,model,color,price) {
     this.manufacturer = manufacturer;
     this.model = model;
@@ -43,14 +44,15 @@ function CellPhone(manufacturer,model,color,price) {
         return "Model: " + this.model;
     };
     this.getDetails = function(){
-        return "Manufacturer: " + this.manufacturer + 
+        return "Manufacturer: " + this.manufacturer +
         "\n" + this.getModel() + "\nColor: " + this.color +
         "\n" + this.getPrice();
     };
 }
 
+//variable declaration
 var phone = new CellPhone("Samsung", "Galaxy S10", "Black", "800.00");
-
+//output
 console.log(phone.getDetails());
 
 
