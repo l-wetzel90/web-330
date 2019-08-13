@@ -11,3 +11,6 @@ node_module
 test.js
 *.docx
 *.pdf
+
+#folders
+test/
