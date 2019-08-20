@@ -9,6 +9,7 @@
 */
 'use strict';
 
+//header output
 var header = require('../wetzel-header.js');
 console.log(header.display("Loren", "Wetzel", "Exercise 2.2"));
 
@@ -26,6 +27,7 @@ console.log(header.display("Loren", "Wetzel", "Exercise 2.2"));
 
 // start program
 
+//constructor function
 var person = {
   getAge: function(){
     return this.age;
@@ -33,6 +35,7 @@ var person = {
   }
 };
 
+//create object from a different object
 var loren = Object.create(person, {
   "age": {
     "value": "38"
@@ -42,10 +45,11 @@ var loren = Object.create(person, {
   }
 });
 
+//call to new object
 loren.getAge();
 
+//output
 console.log("The person's full name is '%s'", loren.fullName);
 console.log("The person's age is '%s'", loren.age);
-
 
 // end program
