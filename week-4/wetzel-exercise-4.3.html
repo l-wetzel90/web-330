@@ -1,0 +1,52 @@
+<!--
+============================================
+; Title:  Exercise 4.2
+; Author: Loren Wetzel
+; Date:   1 September 2019
+; Modified By:
+; Description: Demonstrates the use of Ajax
+;     HTTP DELETE request.
+;=========================================== -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Wetzel Exercise 4.3</title>
+
+  <!-- jQuery reference -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+
+<body>
+
+  <h4>HTTP DELETE example</h4>
+
+  <button id="deleteExample">Delete Example</button>
+
+  <script>
+    $(function () {
+
+      $("#deleteExample").click(function () {
+        $.ajax({
+          url: "http://httpbin.org/delete",
+          dataType: "json",
+          type: "DELETE",
+          data: { username: "loren", password: "blah", age: "38" },
+          success: function (data, status) {
+            console.log(
+              "Username: " + data.form.username +
+              "\nPassword: " + data.form.password +
+              "\nAge: " + data.form.age +
+              "\nStatus: " + status
+            );
+          }
+        });
+      });
+
+    });
+  </script>
+
+</body>
+
+</html>
