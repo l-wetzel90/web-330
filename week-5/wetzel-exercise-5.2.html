@@ -1,0 +1,65 @@
+<!--
+============================================
+; Title:  Exercise 5.2
+; Author: Loren Wetzel
+; Date:   5 September 2019
+; Modified By:
+; Description: Demonstrates the use of jQuery
+;     proxy() method.
+;===========================================
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Exercise 5.2 - The Proxy Pattern</title>
+  <!-- bootstrap -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <!-- jquery Reference Library -->
+  <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+</head>
+
+<body>
+  <nav class="navbar navbar-dark bg-dark">
+    <a href="#" class="navbar-brand">Home</a>
+  </nav>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+
+        <h2>Wetzel Proxy Example</h2>
+        <!-- button to trigger click event for Proxy -->
+        <button class="btn btn-primary" id="btnProxy">Press Me</button>
+
+        <br />
+        <!-- display the results of Proxy -->
+        <span id="spanProxy"></span>
+
+      </div>
+    </div>
+  </div>
+
+  <script>
+    $(function () {
+      // create variable
+      var person = {
+        fName: "Loren",
+        lName: "Wetzel",
+        display: function () {
+          //clear span element if there is anything there
+          $("#spanProxy").html("");
+          //output
+          $("#spanProxy").append("<br>" + "First Name: " + this.fName + "<br>Last Name: " + this.lName);
+        }
+      };
+      //use of proxy for the person variable.
+      $("#btnProxy").click($.proxy(person, "display"));
+    });
+
+  </script>
+</body>
+
+</html>
