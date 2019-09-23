@@ -1,0 +1,108 @@
+<!--
+============================================
+; Title:  Assignment 7.4
+; Author: Loren Wetzel
+; Date:   20 September 2019
+; Modified By:
+; Description: Demonstrate Knockout foreach and attr
+;===========================================
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+  <title>Wetzel Assignment 7.4</title>
+
+  <!-- Stylesheet - Bootstrap -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"
+    integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous" />
+
+  <!-- JavaScript Libraries -->
+  <script src="../knockout-3.5.0.js"></script>
+</head>
+
+<body>
+
+  <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+    <a href="#" class="navbar-brand">Wetzel Assignment 7.4</a>
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <a href="#" class="nav-link">Home</a>
+      </li>
+      <li class="nav-item">
+        <a href="#" class="nav-link">About?</a>
+      </li>
+      <li class="nav-item">
+        <a href="#" class="nav-link">Contact Us?</a>
+      </li>
+    </ul>
+  </nav>
+
+  <div class="container">
+    <br>
+
+    <h2>JavaScript Tutorial Sites</h2>
+    <br>
+
+    <table class="table table-hover table-striped">
+      <thead class="thead-dark">
+        <tr>
+          <th>Title</th>
+          <th>Description</th>
+          <th>Link</th>
+        </tr>
+      </thead>
+      <!-- knockout foreach to display the properties of an observableArray -->
+      <tbody data-bind="foreach: tutorialLinks">
+        <tr>
+          <td data-bind="text: title"></td>
+          <td data-bind="text: description"></td>
+          <td><a data-bind="attr: {href: URL}" target="_blank"><span data-bind="text: title"></span></a></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <script>
+    // viewModel
+    function JSTutorialViewModel() {
+      // ko observableArray of objects
+      this.tutorialLinks = ko.observableArray([
+        {
+          title: "Knockout JS",
+          description: "Simplify dynamic JavaScript UIs with MVVM pattern",
+          URL: "https://knockoutjs.com"
+        },
+        {
+          title: "Javascript | MDN",
+          description: "Beginners tutorial to working with JavaScript",
+          URL: "https://developer.mozilla.org/en-US/docs/Web/JavaScript"
+        },
+        {
+          title: "codecademy",
+          description: "Learn Javascript for free",
+          URL: "https://www.codecademy.com/learn/introduction-to-javascript"
+        },
+        {
+          title: "JavaScript Tutorial tutorialspoint",
+          description: "Learn JavaScript simply easy learning",
+          URL: "https://www.tutorialspoint.com/javascript/"
+        },
+        {
+          title: "JavaScript Tutorial w3schools",
+          description: "This tutorial will teach you JavaScript from basic to advanced",
+          URL: "https://www.w3schools.com/js/"
+        }
+      ]);
+    }
+    // apply the bindings to viewmodel
+    ko.applyBindings(new JSTutorialViewModel());
+  </script>
+
+</body>
+
+</html>

@@ -1,0 +1,102 @@
+<!--
+============================================
+; Title:  Exercise 7.2
+; Author: Loren Wetzel
+; Date:   20 September 2019
+; Modified By:
+; Description: Demonstrate knockout if
+;===========================================
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+  <title>Wetzel Exercise 7.2</title>
+
+  <!-- Stylesheet - Bootstrap -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"
+    integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous" />
+
+  <!-- JavaScript Libraries -->
+  <script src="../knockout-3.5.0.js"></script>
+</head>
+
+<body>
+
+  <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+    <a href="#" class="navbar-brand">Wetzel Exercise 7.2</a>
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <a href="#" class="nav-link">Home</a>
+      </li>
+      <li class="nav-item">
+        <a href="#" class="nav-link">About?</a>
+      </li>
+      <li class="nav-item">
+        <a href="#" class="nav-link">Contact Us?</a>
+      </li>
+    </ul>
+  </nav>
+
+  <div class="container">
+
+    <h2>Person View Model</h2>
+
+    <br>
+
+    <div class="form-group">
+      <label for="txtFName">First Name:</label>
+      <input type="text"
+      data-bind="value: fName"
+      class="form-control"
+      id="txtFName">
+    </div>
+    <!-- if first name is present last name input box displays -->
+    <div data-bind="if: displayFName">
+      <div class="form-group">
+        <label for="txtLName">Last Name:</label>
+        <input type="text"
+        data-bind="value: lName"
+        class="form-control"
+        id="txtLName">
+      </div>
+    </div>
+
+    <br><br>
+    <!-- if last name is present then display first and last combined -->
+    <div data-bind="if: lName">
+      <h2>
+        <span class="alert-success"
+        id="nameOutput"
+        data-bind="text: displayFullName"></span>
+      </h2>
+    </div>
+
+  </div>
+
+  <script>
+    // viewmodel
+    function PersonViewModel() {
+      this.fName = ko.observable("");
+      this.lName = ko.observable("");
+
+      this.displayFName = ko.pureComputed(function () {
+        return this.fName();
+      }, this);
+
+      this.displayFullName = ko.pureComputed(function () {
+        return "Full Name: " + this.fName() + " " + this.lName();
+      },
+        this);
+    }
+    // apply bindings to viewmodel
+    ko.applyBindings(new PersonViewModel());
+  </script>
+
+</body>
+
+</html>
